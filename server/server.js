@@ -14,7 +14,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
@@ -27,6 +27,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/health', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/notifications', notificationRoutes);
