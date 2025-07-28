@@ -1,114 +1,160 @@
-# MERN Stack Insyd Notification System
+# 🚀 Insyd - MERN Stack Real-time Notification System
 
-A real-time Insyd-Notification networking application built with MongoDB, Express.js, React, and Node.js, featuring live notifications using Socket.IO.
+**Insyd** is a real-time social notification app built using the MERN stack: **MongoDB**, **Express.js**, **React**, and **Node.js** — with **Socket.IO** powering instant live updates and notifications.
 
-## Features
+🌐 **Live Demo**: [insyd.snapstay.in](https://insyd.snapstay.in)
+
+🖥️ **Frontend Deployed On**: [Vercel](https://vercel.com)  
+🔧 **Backend Deployed On**: [Render](https://insyd-04ii.onrender.com)
+
+---
+
+## ✨ Features
 
 - 🔐 Simple authentication with demo users
 - 📝 Create and share posts in real-time
 - ❤️ Like and comment on posts
 - 🔔 Real-time notifications with sound alerts
-- 📱 Responsive design with Tailwind CSS
-- ⚡ Socket.IO for instant updates
+- 📱 Fully responsive with Tailwind CSS
+- ⚡ Instant updates via **Socket.IO**
 
-## Demo Users
+---
 
-- **John Doe**: john@demo.com
-- **Jane Smith**: jane@demo.com  
-- **Mike Johnson**: mike@demo.com
+## 👥 Demo Users
 
-Password for all demo users: `password123`
+You can test the app using the following **demo accounts**:  
+(Use 2 different browsers or incognito tabs for real-time testing)
 
-## Quick Start
+```js
+const demoUsers = [
+  { name: 'John Doe', email: 'john@demo.com', password: 'password123' },
+  { name: 'Jane Smith', email: 'jane@demo.com', password: 'password123' },
+  { name: 'Mike Johnson', email: 'mike@demo.com', password: 'password123' }
+];
+````
+
+These are also displayed on the login page.
+
+---
+
+## 🧪 How to Test
+
+1. Go to **[insyd.snapstay.in](https://insyd.snapstay.in)**
+2. Use **any two demo users** in **two different browsers** (or incognito)
+3. Post, like, or comment as one user — the other receives real-time notifications
+
+---
+
+## ⚙️ Quick Start (Manual Setup)
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or Atlas)
 
-### Manual Setup
+* Node.js v14+
+* MongoDB (local or [MongoDB Atlas](https://www.mongodb.com/atlas))
 
-If you prefer to start servers individually:
+### 1. Start Backend
 
-1. **Start MongoDB** (if running locally)
+```bash
+cd server
+npm install
+npm run dev
+```
 
-2. **Start the backend:**
-   ```bash
-   cd server
-   npm install
-   npm run dev
-   ```
-   This will start:
-- Backend server on http://localhost:5000
+Backend will run at: `http://localhost:5000`
 
-3. **Start the frontend:**
-   ```bash
-   cd client
-   npm install
-   npm start
-   ```
-   This will start:
-- React frontend on http://localhost:3000
+### 2. Start Frontend
 
-## Project Structure
+```bash
+cd client
+npm install
+npm start
+```
+
+Frontend will run at: `http://localhost:3000`
+
+---
+
+## 📁 Project Structure
 
 ```
 ├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── contexts/       # React contexts
-│   │   ├── utils/          # Utility functions
-│   │   └── ...
+│   └── src/
+│       ├── components/     # UI components
+│       ├── contexts/       # Global state (Auth, Socket, etc.)
+│       ├── utils/          # Helper functions
+│       └── ...
 ├── server/                 # Express backend
-│   ├── models/             # MongoDB models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   └── server.js           # Main server file
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # API route handlers
+│   ├── middleware/         # Auth & error handling
+│   └── server.js           # Main server entry
 ```
 
-## Technologies Used
+---
 
-### Backend
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - ODM
-- **Socket.IO** - Real-time communication
-- **JWT** - Authentication
-- **bcryptjs** - Password hashing
+## 🔐 API Endpoints
 
-### Frontend
-- **React** - UI library
-- **Socket.IO Client** - Real-time client
-- **Tailwind CSS** - Styling
-- **Axios** - HTTP client
-- **React Hot Toast** - Notifications
+### Auth
 
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
-- `GET /api/auth/demo-users` - Get demo users
+* `POST /api/auth/login` – Login user
+* `GET /api/auth/me` – Get current logged-in user
+* `GET /api/auth/demo-users` – Get list of demo users
 
 ### Posts
-- `GET /api/posts` - Get all posts
-- `POST /api/posts` - Create post
-- `POST /api/posts/:id/like` - Like/unlike post
-- `POST /api/posts/:id/comment` - Add comment
+
+* `GET /api/posts` – Get all posts
+* `POST /api/posts` – Create a new post
+* `POST /api/posts/:id/like` – Like/unlike post
+* `POST /api/posts/:id/comment` – Add a comment
 
 ### Notifications
-- `GET /api/notifications` - Get user notifications
-- `GET /api/notifications/unread-count` - Get unread count
-- `PUT /api/notifications/:id/read` - Mark as read
-- `PUT /api/notifications/mark-all-read` - Mark all as read
 
-## Socket.IO Events
+* `GET /api/notifications` – Get user's notifications
+* `GET /api/notifications/unread-count` – Unread count
+* `PUT /api/notifications/:id/read` – Mark one as read
+* `PUT /api/notifications/mark-all-read` – Mark all as read
 
-### Client to Server
-- `join` - Join user's notification room
+---
 
-### Server to Client
-- `newPost` - New post created
-- `postUpdated` - Post liked/commented
-- `newNotification` - New notification received
+## 🔄 Socket.IO Events
 
-# insyd
+### 📤 Client to Server
+
+* `join` – Join a user-specific room
+
+### 📥 Server to Client
+
+* `newPost` – When a new post is created
+* `postUpdated` – When post is liked or commented
+* `newNotification` – Push a new notification
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+* **Express.js** – Server framework
+* **MongoDB + Mongoose** – NoSQL database
+* **Socket.IO** – Real-time communication
+* **JWT + bcryptjs** – Authentication and password hashing
+
+### Frontend
+
+* **React.js** – UI framework
+* **Tailwind CSS** – Utility-first styling
+* **Axios** – API requests
+* **Socket.IO Client** – Real-time event listening
+* **React Hot Toast** – Toast notifications
+
+---
+
+## 📦 Deployment
+
+| Layer    | Platform | URL                                                                |
+| -------- | -------- | ------------------------------------------------------------------ |
+| Frontend | Vercel   | [https://insyd.snapstay.in](https://insyd.snapstay.in)             |
+| Backend  | Render   | [https://insyd-04ii.onrender.com](https://insyd-04ii.onrender.com) |
+
+---
+
