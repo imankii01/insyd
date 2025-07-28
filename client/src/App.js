@@ -6,11 +6,19 @@ import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import { initSocket } from './utils/socket';
 import './App.css';
-
+const https = require('https')
 function App() {
   const [user, setUser] = useState(null);
   const [socket, setSocket] = useState(null);
   const [loading, setLoading] = useState(true);
+
+
+
+setInterval(() => {
+  https.get(process.env.REACT_APP_API_URL + '/health', (res) => {
+    console.log(`Pinged at ${new Date().toLocaleTimeString()}`);
+  });
+}, 5 * 60 * 1000)
 
   useEffect(() => {
     const token = localStorage.getItem('token');
