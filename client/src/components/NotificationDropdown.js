@@ -16,7 +16,7 @@ const NotificationDropdown = ({ count, onCountChange }) => {
   const loadNotifications = async () => {
     setLoading(true);
     try {
-      const response = await api.get('/api/notifications');
+      const response = await api.get(process.env.REACT_APP_API_URL + '/api/notifications');
       setNotifications(response.data);
     } catch (error) {
       toast.error('Failed to load notifications');
@@ -27,7 +27,7 @@ const NotificationDropdown = ({ count, onCountChange }) => {
 
   const markAsRead = async (notificationId) => {
     try {
-      await api.put(`/api/notifications/${notificationId}/read`);
+      await api.put(process.env.REACT_APP_API_URL + `/api/notifications/${notificationId}/read`);
       setNotifications(prev => 
         prev.map(notif => 
           notif._id === notificationId ? { ...notif, read: true } : notif
@@ -41,7 +41,7 @@ const NotificationDropdown = ({ count, onCountChange }) => {
 
   const markAllAsRead = async () => {
     try {
-      await api.put('/api/notifications/mark-all-read');
+      await api.put(process.env.REACT_APP_API_URL +'/api/notifications/mark-all-read');
       setNotifications(prev => prev.map(notif => ({ ...notif, read: true })));
       onCountChange(0);
       toast.success('All notifications marked as read');

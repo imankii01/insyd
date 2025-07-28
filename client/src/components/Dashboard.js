@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   const loadPosts = async () => {
     try {
-      const response = await api.get('/api/posts');
+      const response = await api.get(process.env.REACT_APP_API_URL + '/api/posts');
       setPosts(response.data);
     } catch (error) {
       toast.error('Failed to load posts');

@@ -34,7 +34,7 @@ const Navbar = () => {
 
   const loadNotificationCount = async () => {
     try {
-      const response = await api.get('/api/notifications/unread-count')
+      const response = await api.get(process.env.REACT_APP_API_URL + '/api/notifications/unread-count')
       setNotificationCount(response.data.count)
     } catch (error) {
       console.error('Failed to load notification count:', error)

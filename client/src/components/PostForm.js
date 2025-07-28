@@ -14,7 +14,7 @@ const PostForm = ({ onPostCreated }) => {
 
     setLoading(true);
     try {
-      const response = await api.post('/api/posts', { content });
+      const response = await api.post(process.env.REACT_APP_API_URL +'/api/posts', { content });
       onPostCreated(response.data);
       setContent('');
       toast.success('Post shared successfully!');

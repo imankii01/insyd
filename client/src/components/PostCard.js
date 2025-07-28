@@ -13,7 +13,7 @@ const PostCard = ({ post }) => {
 
   const handleLike = async () => {
     try {
-      await api.post(`/api/posts/${post._id}/like`);
+      await api.post(process.env.REACT_APP_API_URL +`/api/posts/${post._id}/like`);
     } catch (error) {
       toast.error('Failed to update like');
     }
@@ -25,7 +25,7 @@ const PostCard = ({ post }) => {
 
     setLoading(true);
     try {
-      await api.post(`/api/posts/${post._id}/comment`, { text: commentText });
+      await api.post(process.env.REACT_APP_API_URL +`/api/posts/${post._id}/comment`, { text: commentText });
       setCommentText('');
       setShowComments(true);
     } catch (error) {

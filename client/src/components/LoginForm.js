@@ -10,7 +10,7 @@ const LoginForm = () => {
   const { login } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch('/api/auth/demo-users')
+    fetch(process.env.REACT_APP_API_URL + '/api/auth/demo-users')
       .then(res => res.json())
       .then(data => setDemoUsers(data))
       .catch(err => console.error('Failed to load demo users:', err));
@@ -21,7 +21,7 @@ const LoginForm = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(process.env.REACT_APP_API_URL + '/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
