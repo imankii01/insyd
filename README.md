@@ -4,7 +4,7 @@
 
 🌐 **Live Demo**: [insyd.snapstay.in](https://insyd.snapstay.in)
 
-🖥️ **Frontend Deployed On**: [Vercel](https://vercel.com)  
+🖥️ **Frontend Deployed On**: [Netlify](https://insyd.snapstay.in)  
 🔧 **Backend Deployed On**: [Render](https://insyd-04ii.onrender.com)
 
 ---
@@ -153,7 +153,7 @@ Frontend will run at: `http://localhost:3000`
 
 | Layer    | Platform | URL                                                                |
 | -------- | -------- | ------------------------------------------------------------------ |
-| Frontend | Vercel   | [https://insyd.snapstay.in](https://insyd.snapstay.in)             |
+| Frontend | Netlify   | [https://insyd.snapstay.in](https://insyd.snapstay.in)             |
 | Backend  | Render   | [https://insyd-04ii.onrender.com](https://insyd-04ii.onrender.com) |
 
 ---
